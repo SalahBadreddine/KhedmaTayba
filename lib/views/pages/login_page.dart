@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/constants/classes.dart';
+import 'package:food_delivery/constants/constants.dart';
+import 'package:food_delivery/views/widgets/orange_button_widget.dart';
+import 'package:food_delivery/views/widgets/textfield_widget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -8,8 +12,180 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final bool? isChecked = false;
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      backgroundColor: Color(0xFF121223),
+      body: Column(
+        children: [
+          Flexible(
+            flex: 2,
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 70.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Log In", style: KTextStyle.title),
+                    Text(
+                      "Please sign in to your existing account",
+                      style: KTextStyle.subtitle,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 5,
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(24),
+                  topRight: Radius.circular(24),
+                ),
+              ),
+              child: Padding(
+                padding: EdgeInsetsGeometry.all(20),
+                child: Column(
+                  children: [
+                    TextfieldWidget(
+                      title: "EMAIL",
+                      placeholder: "example@gmail.com",
+                    ),
+                    SizedBox(height: 20),
+                    TextfieldWidget(
+                      title: "PASSWORD",
+                      placeholder: "* * * * * * * * * *",
+                    ),
+                    SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Checkbox(
+                              value: isChecked,
+                              onChanged: (value) {},
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              side: BorderSide(color: Color(0xFFE3EBF2)),
+                            ),
+                            Text(
+                              "Remember me",
+                              style: TextStyle(
+                                color: Color(0xFf7E8A97),
+                                fontSize: 13,
+                              ),
+                            ),
+                          ],
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            "Forgot Password",
+                            style: TextStyle(
+                              color: AppColors.primaryColor,
+                              fontFamily: "Sen",
+                              fontSize: 14,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20.0),
+                      child: OrangeButtonWidget(
+                        onPressed: () {},
+                        buttontext: "LOG IN",
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Don't have an account?",
+                          style: TextStyle(
+                            color: Color(0xFF646982),
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            "SIGN UP",
+                            style: TextStyle(
+                              color: AppColors.primaryColor,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      "Or",
+                      style: TextStyle(
+                        color: Color(0xFF646982),
+                        fontSize: 16,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    SizedBox(height: 15),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        CircleAvatar(
+                          radius: 30,
+                          child: ClipOval(
+                            child: Image.asset(
+                              "assets/images/facebook.png",
+                              fit: BoxFit.contain,
+                              height: 62,
+                              width: 62,
+                            ),
+                          ),
+                        ),
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundColor: Color(0xFF169CE8),
+                          child: ClipOval(
+                            child: Image.asset(
+                              "assets/images/twitter.png",
+                              fit: BoxFit.contain,
+                              height: 62,
+                              width: 62,
+                            ),
+                          ),
+                        ),
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundColor: Colors.black,
+                          child: ClipOval(
+                            child: Image.asset(
+                              "assets/images/apple.webp",
+                              fit: BoxFit.contain,
+                              height: 62,
+                              width: 62,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

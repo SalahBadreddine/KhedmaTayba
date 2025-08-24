@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/constants/constants.dart';
 import 'package:food_delivery/views/pages/login_page.dart';
 import 'package:food_delivery/views/widgets/onboarding_card.dart';
+import 'package:food_delivery/views/widgets/orange_button_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -52,6 +52,25 @@ class _OnboardingPageState extends State<OnboardingPage> {
     });
   }
 
+  void onPressed() {
+    if (_currentPage < onboardingPages.length - 1) {
+      _pageController.nextPage(
+        duration: Duration(milliseconds: 400),
+        curve: Curves.easeInOut,
+      );
+    } else {
+      // TODO: goes to sign-in / log-in
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return LoginPage();
+          },
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,41 +99,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
               },
             ),
             SizedBox(height: 50),
-            SizedBox(
-              width: double.infinity,
-              height: 62,
-              child: FilledButton(
-                onPressed: () {
-                  if (_currentPage < onboardingPages.length - 1) {
-                    _pageController.nextPage(
-                      duration: Duration(milliseconds: 400),
-                      curve: Curves.easeInOut,
-                    );
-                  } else {
-                    // TODO: goes to sign-in / log-in
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return LoginPage();
-                        },
-                      ),
-                    );
-                  }
-                },
-                style: FilledButton.styleFrom(
-                  backgroundColor: AppColors.primaryColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: Text(
-                  _currentPage < onboardingPages.length - 1
+            OrangeButtonWidget(onPressed: onPressed, buttontext: _currentPage < onboardingPages.length - 1
                       ? "Next"
-                      : "Get Started",
-                ),
-              ),
-            ),
+                      : "Get Started",),
             TextButton(
               onPressed: () {},
               child: Text("Skip", style: TextStyle(color: Color(0xFF646982))),
