@@ -6,10 +6,12 @@ class OrangeButtonWidget extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.buttontext,
+    this.icon = const SizedBox(),
   });
 
   final VoidCallback onPressed;
   final String buttontext;
+  final Widget icon;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +28,14 @@ class OrangeButtonWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           ),
         ),
-        child: Text(
-          buttontext,
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              buttontext,
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            ), icon,
+          ],
         ),
       ),
     );

@@ -81,7 +81,7 @@ class _SignupPageState extends State<SignupPage> {
                       placeholder: "* * * * * * * * * *",
                       isPassword: true,
                     ),
-                    SizedBox(height: 50),
+                    SizedBox(height: 40),
                     OrangeButtonWidget(
                       onPressed: () {
                         Navigator.push(

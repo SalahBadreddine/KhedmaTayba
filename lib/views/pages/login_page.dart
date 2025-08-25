@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
 import 'package:food_delivery/views/pages/forgot_password_page.dart';
+import 'package:food_delivery/views/pages/location_access_page.dart';
 import 'package:food_delivery/views/pages/signup_page.dart';
 import 'package:food_delivery/views/widgets/orange_button_widget.dart';
 import 'package:food_delivery/views/widgets/page_title_widget.dart';
@@ -18,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Color(0xFF121223),),
+      appBar: AppBar(backgroundColor: Color(0xFF121223)),
       backgroundColor: Color(0xFF121223),
       body: Column(
         children: [
@@ -28,9 +29,10 @@ class _LoginPageState extends State<LoginPage> {
               child: PageTitleWidget(
                 title: "Log In",
                 subtitle: "Please sign in to your existing account",
-                ),
               ),
-            ),        Expanded(
+            ),
+          ),
+          Expanded(
             flex: 8,
             child: Container(
               width: double.infinity,
@@ -109,7 +111,16 @@ class _LoginPageState extends State<LoginPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20.0),
                       child: OrangeButtonWidget(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return LocationAccessPage();
+                              },
+                            ),
+                          );
+                        },
                         buttontext: "LOG IN",
                       ),
                     ),
@@ -126,9 +137,14 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder:(context) {
-                              return SignupPage();
-                            },));
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return SignupPage();
+                                },
+                              ),
+                            );
                           },
                           child: Text(
                             "SIGN UP",
@@ -141,7 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
                     Text(
                       "Or",
                       style: TextStyle(
