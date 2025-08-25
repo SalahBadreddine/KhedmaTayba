@@ -61,6 +61,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     TextfieldWidget(
                       title: "EMAIL",
                       placeholder: "example@gmail.com",
+                      isPassword: false,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20.0),

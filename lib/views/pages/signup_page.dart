@@ -61,34 +61,39 @@ class _SignupPageState extends State<SignupPage> {
                     TextfieldWidget(
                       title: "NAME",
                       placeholder: "John Doe",
+                      isPassword: false,
                     ),
+                    SizedBox(height: 20),
                     TextfieldWidget(
                       title: "EMAIL",
                       placeholder: "example@gmail.com",
+                      isPassword: false,
                     ),
+                    SizedBox(height: 20),
                     TextfieldWidget(
                       title: "PASSWORD",
                       placeholder: "* * * * * * * * * *",
+                      isPassword: true,
                     ),
+                    SizedBox(height: 20),
                     TextfieldWidget(
                       title: "RE-TYPE PASSWORD",
                       placeholder: "* * * * * * * * * *",
+                      isPassword: true,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20.0),
-                      child: OrangeButtonWidget(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return VerificationPage();
-                              },
-                            ),
-                          );
-                        },
-                        buttontext: "SEND CODE",
-                      ),
+                    SizedBox(height: 50),
+                    OrangeButtonWidget(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return VerificationPage();
+                            },
+                          ),
+                        );
+                      },
+                      buttontext: "SIGN UP",
                     ),
                   ],
                 ),

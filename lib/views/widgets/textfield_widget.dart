@@ -6,15 +6,19 @@ class TextfieldWidget extends StatefulWidget {
     super.key,
     required this.title,
     required this.placeholder,
+    required this.isPassword,
   });
 
   final String title;
   final String placeholder;
+  final bool isPassword;
+
   @override
   State<TextfieldWidget> createState() => _TextfieldWidgetState();
 }
 
 class _TextfieldWidgetState extends State<TextfieldWidget> {
+  late bool obscureText = widget.isPassword ? true : false;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,10 +27,8 @@ class _TextfieldWidgetState extends State<TextfieldWidget> {
         Text(widget.title, style: KTextStyle.TextfieldInfo),
         SizedBox(height: 8),
         TextFormField(
-          style: TextStyle(
-            color: Color(0xFFA0A5BA),
-            fontSize: 14,
-          ),
+          style: TextStyle(color: Color(0xFFA0A5BA), fontSize: 14),
+          obscureText: obscureText,
           decoration: InputDecoration(
             hintText: widget.placeholder,
             border: OutlineInputBorder(
@@ -36,6 +38,19 @@ class _TextfieldWidgetState extends State<TextfieldWidget> {
             filled: true,
             fillColor: Color(0xFFF0F5FA),
             contentPadding: EdgeInsets.all(20),
+            suffixIcon: widget.isPassword
+                ? IconButton(
+                    icon: Icon(
+                      obscureText ? Icons.visibility_off : Icons.visibility,
+                      color: Color(0xFFA0A5BA),
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        obscureText = !obscureText; // toggle visibility
+                      });
+                    },
+                  )
+                : null,
           ),
         ),
       ],

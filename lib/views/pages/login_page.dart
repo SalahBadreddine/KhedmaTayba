@@ -48,11 +48,13 @@ class _LoginPageState extends State<LoginPage> {
                     TextfieldWidget(
                       title: "EMAIL",
                       placeholder: "example@gmail.com",
+                      isPassword: false,
                     ),
                     SizedBox(height: 20),
                     TextfieldWidget(
                       title: "PASSWORD",
                       placeholder: "* * * * * * * * * *",
+                      isPassword: true,
                     ),
                     SizedBox(height: 10),
                     Row(
