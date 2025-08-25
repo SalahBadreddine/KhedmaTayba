@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/classes.dart';
 import 'package:food_delivery/constants/constants.dart';
+import 'package:food_delivery/views/pages/forgot_password_page.dart';
 import 'package:food_delivery/views/widgets/orange_button_widget.dart';
+import 'package:food_delivery/views/widgets/page_title_widget.dart';
 import 'package:food_delivery/views/widgets/textfield_widget.dart';
 
 class LoginPage extends StatefulWidget {
@@ -24,16 +26,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.only(top: 70.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Log In", style: KTextStyle.title),
-                    Text(
-                      "Please sign in to your existing account",
-                      style: KTextStyle.subtitle,
-                    ),
-                  ],
-                ),
+                child: PageTitleWidget(title: "Log In", subtitle: "Please sign in to your existing account")
               ),
             ),
           ),
@@ -85,7 +78,16 @@ class _LoginPageState extends State<LoginPage> {
                           ],
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return ForgotPasswordPage();
+                                },
+                              ),
+                            );
+                          },
                           child: Text(
                             "Forgot Password",
                             style: TextStyle(
