@@ -99,11 +99,23 @@ class _OnboardingPageState extends State<OnboardingPage> {
               },
             ),
             SizedBox(height: 50),
-            OrangeButtonWidget(onPressed: onPressed, buttontext: _currentPage < onboardingPages.length - 1
-                      ? "Next"
-                      : "Get Started",),
+            OrangeButtonWidget(
+              onPressed: onPressed,
+              buttontext: _currentPage < onboardingPages.length - 1
+                  ? "Next"
+                  : "Get Started",
+            ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return LoginPage();
+                    },
+                  ),
+                );
+              },
               child: Text("Skip", style: TextStyle(color: Color(0xFF646982))),
             ),
           ],
