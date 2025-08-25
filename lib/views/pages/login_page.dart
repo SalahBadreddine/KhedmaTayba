@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/constants/classes.dart';
 import 'package:food_delivery/constants/constants.dart';
 import 'package:food_delivery/views/pages/forgot_password_page.dart';
 import 'package:food_delivery/views/widgets/orange_button_widget.dart';
@@ -14,24 +13,24 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final bool? isChecked = false;
+  bool? isChecked = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(backgroundColor: Color(0xFF121223),),
       backgroundColor: Color(0xFF121223),
       body: Column(
         children: [
           Flexible(
             flex: 2,
             child: Center(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 70.0),
-                child: PageTitleWidget(title: "Log In", subtitle: "Please sign in to your existing account")
+              child: PageTitleWidget(
+                title: "Log In",
+                subtitle: "Please sign in to your existing account",
+                ),
               ),
-            ),
-          ),
-          Expanded(
-            flex: 5,
+            ),        Expanded(
+            flex: 7,
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
@@ -62,7 +61,11 @@ class _LoginPageState extends State<LoginPage> {
                           children: [
                             Checkbox(
                               value: isChecked,
-                              onChanged: (value) {},
+                              onChanged: (value) {
+                                setState(() {
+                                  isChecked = value;
+                                });
+                              },
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5),
                               ),

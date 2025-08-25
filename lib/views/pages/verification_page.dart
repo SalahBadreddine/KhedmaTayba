@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/views/pages/verification_page.dart';
 import 'package:food_delivery/views/widgets/orange_button_widget.dart';
 import 'package:food_delivery/views/widgets/page_title_widget.dart';
 import 'package:food_delivery/views/widgets/textfield_widget.dart';
 
-class ForgotPasswordPage extends StatefulWidget {
-  const ForgotPasswordPage({super.key});
+class VerificationPage extends StatefulWidget {
+  const VerificationPage({super.key});
 
   @override
-  State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
+  State<VerificationPage> createState() => _VerificationPageState();
 }
 
-class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
+class _VerificationPageState extends State<VerificationPage> {
   final bool? isChecked = false;
   @override
   Widget build(BuildContext context) {
@@ -36,10 +35,22 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         children: [
           Flexible(
             flex: 2,
-            child: Center(
-              child: PageTitleWidget(
-                title: "Forgot Password",
-                subtitle: "Please sign in to your existing account",
+              child: Center(
+                child: Column(
+                  children: [
+                    PageTitleWidget(
+                      title: "Verification",
+                      subtitle: "We have sent a code to your email",
+                    ),
+                    Text(
+                      "example@gmail.com",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -59,23 +70,14 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 child: Column(
                   children: [
                     TextfieldWidget(
-                      title: "EMAIL",
+                      title: "CODE",
                       placeholder: "example@gmail.com",
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20.0),
                       child: OrangeButtonWidget(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return VerificationPage();
-                              },
-                            ),
-                          );
-                        },
-                        buttontext: "SEND CODE",
+                        onPressed: () {},
+                        buttontext: "VERIFY",
                       ),
                     ),
                   ],

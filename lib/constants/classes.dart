@@ -5,7 +5,7 @@ class KTextStyle {
   static const TextStyle title = TextStyle(
     color: Color(0xFFFFFFFF),
     fontSize: 30,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w900,
   );
 
   static const TextStyle subtitle = TextStyle(
