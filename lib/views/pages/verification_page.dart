@@ -55,7 +55,7 @@ class _VerificationPageState extends State<VerificationPage> {
             ),
           ),
           Expanded(
-            flex: 7,
+            flex: 8,
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
@@ -66,7 +66,7 @@ class _VerificationPageState extends State<VerificationPage> {
                 ),
               ),
               child: Padding(
-                padding: EdgeInsetsGeometry.all(30),
+                padding: EdgeInsetsGeometry.all(25),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -85,7 +85,11 @@ class _VerificationPageState extends State<VerificationPage> {
                             children: [
                               TextSpan(
                                 text: " in.50sec",
-                                style: TextStyle(color: Color(0xFF32343E), fontWeight: FontWeight.normal, decoration: TextDecoration.none,),
+                                style: TextStyle(
+                                  color: Color(0xFF32343E),
+                                  fontWeight: FontWeight.normal,
+                                  decoration: TextDecoration.none,
+                                ),
                               ),
                             ],
                           ),
@@ -107,9 +111,9 @@ class _VerificationPageState extends State<VerificationPage> {
                               fontWeight: FontWeight.bold,
                             ),
                             keyboardType: TextInputType.number,
-                            maxLength: 1, // only 1 digit per box
+                            maxLength: 1, 
                             decoration: InputDecoration(
-                              counterText: "", // hide bottom counter
+                              counterText: "", 
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide: BorderSide.none,
@@ -123,7 +127,7 @@ class _VerificationPageState extends State<VerificationPage> {
                       }),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20.0),
+                      padding: const EdgeInsets.symmetric(vertical: 30.0),
                       child: OrangeButtonWidget(
                         onPressed: () {},
                         buttontext: "VERIFY",

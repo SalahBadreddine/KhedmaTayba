@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
 import 'package:food_delivery/views/pages/forgot_password_page.dart';
+import 'package:food_delivery/views/pages/signup_page.dart';
 import 'package:food_delivery/views/widgets/orange_button_widget.dart';
 import 'package:food_delivery/views/widgets/page_title_widget.dart';
 import 'package:food_delivery/views/widgets/textfield_widget.dart';
@@ -30,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),        Expanded(
-            flex: 7,
+            flex: 8,
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
@@ -41,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               child: Padding(
-                padding: EdgeInsetsGeometry.all(20),
+                padding: EdgeInsetsGeometry.all(25),
                 child: Column(
                   children: [
                     TextfieldWidget(
@@ -122,7 +123,11 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder:(context) {
+                              return SignupPage();
+                            },));
+                          },
                           child: Text(
                             "SIGN UP",
                             style: TextStyle(

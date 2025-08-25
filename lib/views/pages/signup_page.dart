@@ -4,14 +4,14 @@ import 'package:food_delivery/views/widgets/orange_button_widget.dart';
 import 'package:food_delivery/views/widgets/page_title_widget.dart';
 import 'package:food_delivery/views/widgets/textfield_widget.dart';
 
-class ForgotPasswordPage extends StatefulWidget {
-  const ForgotPasswordPage({super.key});
+class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
 
   @override
-  State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
+class _SignupPageState extends State<SignupPage> {
   final bool? isChecked = false;
   @override
   Widget build(BuildContext context) {
@@ -38,8 +38,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             flex: 2,
             child: Center(
               child: PageTitleWidget(
-                title: "Forgot Password",
-                subtitle: "Please sign in to your existing account",
+                title: "Sign Up",
+                subtitle: "Please sign up to get started",
                 ),
               ),
             ),
@@ -55,12 +55,24 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 ),
               ),
               child: Padding(
-                padding: EdgeInsetsGeometry.all(25),
+                padding: EdgeInsetsGeometry.all(20),
                 child: Column(
                   children: [
                     TextfieldWidget(
+                      title: "NAME",
+                      placeholder: "John Doe",
+                    ),
+                    TextfieldWidget(
                       title: "EMAIL",
                       placeholder: "example@gmail.com",
+                    ),
+                    TextfieldWidget(
+                      title: "PASSWORD",
+                      placeholder: "* * * * * * * * * *",
+                    ),
+                    TextfieldWidget(
+                      title: "RE-TYPE PASSWORD",
+                      placeholder: "* * * * * * * * * *",
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20.0),
