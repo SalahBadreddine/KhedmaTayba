@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
+import 'package:food_delivery/views/pages/search_page.dart';
 import 'package:food_delivery/views/widgets/category_widget.dart';
 import 'package:food_delivery/views/widgets/home_selection_widget.dart';
+import 'package:food_delivery/views/widgets/navigation_widget.dart';
 import 'package:food_delivery/views/widgets/restaurant_card_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,7 +21,7 @@ class _HomePageState extends State<HomePage> {
     ["Pizza", "assets/images/pizza.png"],
   ];
 
-  String num_cart_items = "2";
+  String numcartitems = "2";
 
   String selectedCtegory = "All Categories";
   int selectedCategoryIndex = 0;
@@ -50,106 +52,85 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(right: 20),
-                          height: 45,
+                NavigationWidget(
+                  onTapLeadingButton: () {},
+                  icon1: Icons.menu,
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "DELIVER TO",
+                        style: TextStyle(
+                          color: AppColors.primaryColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      DropdownButton(
+                        isDense: true,
+                        items: [
+                          DropdownMenuItem(
+                            child: Text(
+                              "Halal Lab office",
+                              style: TextStyle(
+                                color: Color(0xFF676767),
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ],
+                        icon: Icon(
+                          Icons.arrow_drop_down,
+                          color: AppColors.homeDark,
+                        ),
+                        underline: SizedBox(),
+                        onChanged: (value) {},
+                      ),
+                    ],
+                  ),
+                  suffixicon: Stack(
+                    children: [
+                      SizedBox(height: 49, width: 45),
+                      Positioned(
+                        bottom: 0,
+                        child: Container(
                           width: 45,
+                          height: 45,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Color(0xFFECF0F4),
+                            color: AppColors.homeDark,
                           ),
                           child: IconButton(
                             onPressed: () {},
-                            icon: Icon(Icons.menu),
-                            iconSize: 30,
-                            color: AppColors.homeDark,
-                            padding: EdgeInsets.zero,
+                            icon: Icon(Icons.shopping_cart),
+                            color: Colors.white,
                           ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "DELIVER TO",
+                      ),
+                      Positioned(
+                        top: 0,
+                        right: 0,
+                        child: Container(
+                          height: 25,
+                          width: 25,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppColors.primaryColor,
+                          ),
+                          child: Center(
+                            child: Text(
+                              numcartitems,
                               style: TextStyle(
-                                color: AppColors.primaryColor,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            DropdownButton(
-                              isDense: true,
-                              items: [
-                                DropdownMenuItem(
-                                  child: Text(
-                                    "Halal Lab office",
-                                    style: TextStyle(
-                                      color: Color(0xFF676767),
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                              icon: Icon(
-                                Icons.arrow_drop_down,
-                                color: AppColors.homeDark,
-                              ),
-                              underline: SizedBox(),
-                              onChanged: (value) {},
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Stack(
-                      children: [
-                        SizedBox(height: 49, width: 45),
-                        Positioned(
-                          bottom: 0,
-                          child: Container(
-                            width: 45,
-                            height: 45,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: AppColors.homeDark,
-                            ),
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.shopping_cart),
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 0,
-                          right: 0,
-                          child: Container(
-                            height: 25,
-                            width: 25,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: AppColors.primaryColor,
-                            ),
-                            child: Center(
-                              child: Text(
-                                num_cart_items,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w900,
-                                ),
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w900,
                               ),
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(height: 30),
                 RichText(
@@ -165,17 +146,33 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(height: 15),
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: "Search dishes, restaurants",
-                    filled: true,
-                    fillColor: Color(0xFFF6F6F6),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.circular(10),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return SearchPage();
+                        },
+                      ),
+                    );
+                  },
+                  child: TextFormField(
+                    enabled: false,
+                    decoration: InputDecoration(
+                      hintText: "Search dishes, restaurants",
+                      filled: true,
+                      fillColor: Color(0xFFF6F6F6),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: AppColors.iconColor,
+                      ),
+                      contentPadding: EdgeInsets.all(20),
                     ),
-                    prefixIcon: Icon(Icons.search, color: AppColors.iconColor),
-                    contentPadding: EdgeInsets.all(20),
                   ),
                 ),
                 SizedBox(height: 30),
