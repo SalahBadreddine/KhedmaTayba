@@ -19,11 +19,25 @@ class _HomePageState extends State<HomePage> {
     ["Pizza", "assets/images/pizza.png"],
   ];
 
+  String num_cart_items = "2";
+
   String selectedCtegory = "All Categories";
   int selectedCategoryIndex = 0;
   List<List<dynamic>> restaurants = [
-    ["assets/images/restaurant1.jpg", "Rose Garden Restaurant", ["Burger", "Chiken", "Riche", "Wings"], "4.7", "20"],
-    ["assets/images/restaurant2.webp", "Mama's Kitchen", ["Soupe", "Salade", "Couscous"], "4.9", "30"]
+    [
+      "assets/images/restaurant1.jpg",
+      "Rose Garden Restaurant",
+      ["Burger", "Chiken", "Riche", "Wings"],
+      "4.7",
+      "20",
+    ],
+    [
+      "assets/images/restaurant2.webp",
+      "Mama's Kitchen",
+      ["Soupe", "Salade", "Couscous"],
+      "4.9",
+      "30",
+    ],
   ];
 
   @override
@@ -92,18 +106,48 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     ),
-                    Container(
-                      width: 45,
-                      height: 49,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: AppColors.homeDark,
-                      ),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.shopping_cart),
-                        color: Colors.white,
-                      ),
+                    Stack(
+                      children: [
+                        SizedBox(height: 49, width: 45),
+                        Positioned(
+                          bottom: 0,
+                          child: Container(
+                            width: 45,
+                            height: 45,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: AppColors.homeDark,
+                            ),
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.shopping_cart),
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 0,
+                          right: 0,
+                          child: Container(
+                            height: 25,
+                            width: 25,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: AppColors.primaryColor,
+                            ),
+                            child: Center(
+                              child: Text(
+                                num_cart_items,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -169,7 +213,6 @@ class _HomePageState extends State<HomePage> {
                     types: restaurants.elementAt(index).elementAt(2),
                     rating: restaurants.elementAt(index).elementAt(3),
                     time: restaurants.elementAt(index).elementAt(4),
-                    
                   );
                 }),
               ],
