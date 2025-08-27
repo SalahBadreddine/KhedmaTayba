@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
+import 'package:food_delivery/views/pages/display_page.dart';
 import 'package:food_delivery/views/widgets/card_info_widget.dart';
+import 'package:food_delivery/views/widgets/food_card_widget.dart';
 import 'package:food_delivery/views/widgets/home_selection_widget.dart';
 import 'package:food_delivery/views/widgets/icon_home_widget.dart';
 import 'package:food_delivery/views/widgets/navigation_widget.dart';
@@ -23,12 +25,12 @@ class _SearchPageState extends State<SearchPage> {
     ["assets/images/restaurant2.webp", "American Spicy Burger Shop", "4.3"],
     ["assets/images/restaurant3.jpg", "The Grill", "4.0"],
   ];
-  List<List<String>> popular_food = [
+  List<List<String>> popularfood = [
     // is used in Popular fast food, unlimited suggestions
-    ["assets/images/burger.png", "American Burger", "American Spicy Burger Shop",],
-    ["assets/images/pizza.png", "European Pizza", "Pansi Restaurant"],
-    ["assets/images/hotdog.png", "German Hot Dog", "The Grill"],
-    ["assets/images/hotdog.png", "Algerian Hot Dog", "Signature"],
+    ["assets/images/burger.png", "American Burger", "America's Burger", "70"],
+    ["assets/images/pizza.png", "European Pizza", "Pansi Restaurant", "40"],
+    ["assets/images/hotdog.png", "German Hot Dog", "The Grill", "55"],
+    ["assets/images/hotdog.png", "Algerian Hot Dog", "Signature", "100"],
   ];
 
   @override
@@ -117,25 +119,37 @@ class _SearchPageState extends State<SearchPage> {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: List.generate(keywords.length, (index) {
-                      return Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 15,
-                        ),
-                        margin: EdgeInsets.only(right: 10),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(33),
-                          border: Border.all(
-                            color: Color(0xFFEDEDED),
-                            width: 2,
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return DisplayPage(title: keywords.elementAt(index),);
+                              },
+                            ),
+                          );
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 15,
                           ),
-                        ),
-                        child: Text(
-                          keywords.elementAt(index),
-                          style: TextStyle(
-                            color: AppColors.homeDark,
-                            fontSize: 16,
+                          margin: EdgeInsets.only(right: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(33),
+                            border: Border.all(
+                              color: Color(0xFFEDEDED),
+                              width: 2,
+                            ),
+                          ),
+                          child: Text(
+                            keywords.elementAt(index),
+                            style: TextStyle(
+                              color: AppColors.homeDark,
+                              fontSize: 16,
+                            ),
                           ),
                         ),
                       );
@@ -201,53 +215,21 @@ class _SearchPageState extends State<SearchPage> {
                 GridView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: popular_food.length,
+                  itemCount: popularfood.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,           // 2 items per row
+                    crossAxisCount: 2, // 2 items per row
                     crossAxisSpacing: 20,
                     mainAxisSpacing: 20,
-                    childAspectRatio: 153 / 160, // keep consistent card shape
+                    childAspectRatio: 153 / 170, // keep consistent card shape
                   ),
                   itemBuilder: (context, index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.white,
-                      ),
-                      child: Column(
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            height: 84,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              image: DecorationImage(
-                                image: AssetImage(popular_food[index][0]),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            popular_food[index][1],
-                            style: TextStyle(
-                              color: AppColors.homeDark,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          SizedBox(height: 3),
-                          Text(
-                            popular_food[index][2],
-                            style: TextStyle(
-                              color: Color(0xFF646982),
-                              fontSize: 13,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
+                    return FoodCardWidget(
+                      image: popularfood.elementAt(index).elementAt(0),
+                      foodName: popularfood.elementAt(index).elementAt(1),
+                      restaurantName: popularfood
+                          .elementAt(index)
+                          .elementAt(2),
+                      foodPrice: popularfood.elementAt(index).elementAt(3),
                     );
                   },
                 ),

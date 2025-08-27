@@ -19,4 +19,10 @@ class KTextStyle {
     fontSize: 13,
     fontWeight: FontWeight.normal,
   );
+
+  static const TextStyle dropButtonTextStyle = TextStyle(
+    color: AppColors.homeDark,
+    fontSize: 15,
+    fontWeight: FontWeight.bold,
+  );
 }
