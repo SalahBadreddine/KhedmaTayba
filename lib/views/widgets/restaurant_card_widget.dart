@@ -64,6 +64,7 @@ class RestaurantCardWidget extends StatelessWidget {
               CardInfoWidget(
                 info: rating,
                 icon: IconHomeWidget(icon: Icons.star_outline),
+                isBold: true,
               ),
               CardInfoWidget(
                 info: "Free",

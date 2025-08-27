@@ -3,10 +3,16 @@ import 'package:food_delivery/constants/constants.dart';
 import 'package:food_delivery/views/widgets/icon_home_widget.dart';
 
 class CardInfoWidget extends StatelessWidget {
-  const CardInfoWidget({super.key, required this.info, required this.icon});
+  const CardInfoWidget({
+    super.key,
+    required this.info,
+    required this.icon,
+    this.isBold = false,
+  });
 
   final String info;
   final IconHomeWidget icon;
+  final bool isBold;
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +21,13 @@ class CardInfoWidget extends StatelessWidget {
       child: Row(
         children: [
           icon,
-          SizedBox(width: 5),
+          SizedBox(width: 3),
           Text(
             info,
             style: TextStyle(
               color: AppColors.homeDark,
               fontSize: 16,
-              fontWeight: FontWeight.bold,
+              fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
             ),
           ),
         ],

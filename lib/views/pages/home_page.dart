@@ -37,9 +37,16 @@ class _HomePageState extends State<HomePage> {
       "assets/images/restaurant2.webp",
       "Mama's Kitchen",
       ["Soupe", "Salade", "Couscous"],
-      "4.9",
+      "4.6",
       "30",
     ],
+    [
+      "assets/images/restaurant3.jpg",
+      "The Grill Restaurant",
+      ["Chawarma", "Grillade", "Meat"],
+      "4.5",
+      "70",
+    ]
   ];
 
   @override
@@ -176,7 +183,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(height: 30),
-                HomeSelectionWidget(selectedCtegory: selectedCtegory),
+                HomeSelectionWidget(selectedInfo: selectedCtegory, isSeeAll: true,),
                 SizedBox(height: 10),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -201,7 +208,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(height: 20),
-                HomeSelectionWidget(selectedCtegory: "Open Restaurants"),
+                HomeSelectionWidget(selectedInfo: "Open Restaurants", isSeeAll: true,),
                 SizedBox(height: 10),
                 ...List.generate(restaurants.length, (index) {
                   return RestaurantCardWidget(

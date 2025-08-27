@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
 
 class HomeSelectionWidget extends StatelessWidget {
-  const HomeSelectionWidget({super.key, required this.selectedCtegory});
+  const HomeSelectionWidget({
+    super.key,
+    required this.selectedInfo,
+    required this.isSeeAll,
+  });
 
-  final String selectedCtegory;
+  final String selectedInfo;
+  final bool isSeeAll;
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +17,14 @@ class HomeSelectionWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          selectedCtegory == "All" ? "All Categories" : selectedCtegory,
+          selectedInfo == "All" ? "All Categories" : selectedInfo,
           style: TextStyle(color: AppColors.darkColor, fontSize: 20),
         ),
+        isSeeAll ?
         TextButton(
+          style: TextButton.styleFrom(
+            padding: EdgeInsets.zero,
+          ),
           onPressed: () {},
           child: Row(
             children: [
@@ -27,7 +36,7 @@ class HomeSelectionWidget extends StatelessWidget {
               Icon(Icons.arrow_forward_ios, color: AppColors.iconColor),
             ],
           ),
-        ),
+        ) : SizedBox(),
       ],
     );
   }
