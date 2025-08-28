@@ -3,6 +3,7 @@ import 'package:food_delivery/constants/constants.dart';
 import 'package:food_delivery/views/widgets/card_info_widget.dart';
 import 'package:food_delivery/views/widgets/icon_home_widget.dart';
 import 'package:food_delivery/views/widgets/navigation_widget.dart';
+import 'package:food_delivery/views/widgets/orange_button_widget.dart';
 
 class FoodDetailsPage extends StatefulWidget {
   const FoodDetailsPage({super.key});
@@ -13,7 +14,8 @@ class FoodDetailsPage extends StatefulWidget {
 
 class _FoodDetailsPageState extends State<FoodDetailsPage> {
   int selection = 0;
-
+  int foodQuantity = 1;
+  
   @override
   Widget build(BuildContext context) {
     String foodImage = "assets/images/burger_background.webp";
@@ -32,8 +34,112 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
       [Icons.food_bank_outlined, "Garlic"],
       [Icons.kitchen_outlined, "Pappers"],
     ];
+    String foodPrice = "32";
 
     return Scaffold(
+      bottomNavigationBar: Container(
+        height: 184,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30),
+          color: Color(0xFFF0F5FA),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 30.0,
+                vertical: 15,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "\$$foodPrice",
+                    style: TextStyle(color: AppColors.homeDark, fontSize: 28),
+                  ),
+                  Container(
+                    width: 125,
+                    height: 48,
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Color(0xFF121223),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: 24,
+                          height: 24,
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 44, 44, 55),
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                if (foodQuantity > 1) {
+                                  foodQuantity--;
+                                }
+                              });
+                            },
+                            icon: Icon(
+                              Icons.remove,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            padding: EdgeInsets.zero,
+                            iconSize: 15,
+                          ),
+                        ),
+                        Text(
+                          foodQuantity.toString(),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Container(
+                          width: 24,
+                          height: 24,
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 44, 44, 55),
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                foodQuantity++;
+                              });
+                            },
+                            icon: Icon(
+                              Icons.add,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            padding: EdgeInsets.zero,
+                            iconSize: 15,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+              child: OrangeButtonWidget(
+                onPressed: () {},
+                buttontext: "ADD TO CART",
+              ),
+            ),
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [

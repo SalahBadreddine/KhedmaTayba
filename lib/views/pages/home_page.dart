@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
       ["Chawarma", "Grillade", "Meat"],
       "4.5",
       "70",
-    ],
+    ]
   ];
 
   @override
@@ -83,7 +83,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ],
-                  icon: Icon(Icons.arrow_drop_down, color: AppColors.homeDark),
+                  icon: Icon(
+                    Icons.arrow_drop_down,
+                    color: AppColors.homeDark,
+                  ),
                   underline: SizedBox(),
                   onChanged: (value) {},
                 ),
@@ -141,7 +144,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 20),
+              SizedBox(height: 20,),
               RichText(
                 text: TextSpan(
                   text: "Hey Halal, ",
@@ -176,16 +179,16 @@ class _HomePageState extends State<HomePage> {
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    prefixIcon: Icon(Icons.search, color: AppColors.iconColor),
+                    prefixIcon: Icon(
+                      Icons.search,
+                      color: AppColors.iconColor,
+                    ),
                     contentPadding: EdgeInsets.all(20),
                   ),
                 ),
               ),
               SizedBox(height: 30),
-              HomeSelectionWidget(
-                selectedInfo: selectedCtegory,
-                isSeeAll: true,
-              ),
+              HomeSelectionWidget(selectedInfo: selectedCtegory, isSeeAll: true,),
               SizedBox(height: 10),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -195,7 +198,9 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         setState(() {
                           selectedCategoryIndex = index;
-                          selectedCtegory = list.elementAt(index).elementAt(0);
+                          selectedCtegory = list
+                              .elementAt(index)
+                              .elementAt(0);
                         });
                       },
                       child: CategoryWidget(
@@ -208,10 +213,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(height: 20),
-              HomeSelectionWidget(
-                selectedInfo: "Open Restaurants",
-                isSeeAll: true,
-              ),
+              HomeSelectionWidget(selectedInfo: "Open Restaurants", isSeeAll: true,),
               SizedBox(height: 10),
               ...List.generate(restaurants.length, (index) {
                 return RestaurantCardWidget(
