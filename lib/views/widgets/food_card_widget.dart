@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
+import 'package:food_delivery/views/pages/food_details_page.dart';
 
 class FoodCardWidget extends StatelessWidget {
   const FoodCardWidget({
@@ -52,7 +53,7 @@ class FoodCardWidget extends StatelessWidget {
             style: TextStyle(color: Color(0xFF646982), fontSize: 13),
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: 5,),
+          SizedBox(height: 5),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -72,7 +73,16 @@ class FoodCardWidget extends StatelessWidget {
                   color: AppColors.primaryColor,
                 ),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return FoodDetailsPage();
+                        },
+                      ),
+                    );
+                  },
                   icon: Icon(Icons.add, fontWeight: FontWeight.bold),
                   color: Colors.white,
                   iconSize: 20,
