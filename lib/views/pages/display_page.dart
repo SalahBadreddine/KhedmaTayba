@@ -45,136 +45,140 @@ class DisplayPage extends StatelessWidget {
     ];
 
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(30),
-            child: Column(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Padding(
+          padding: EdgeInsets.all(10),
+          child: NavigationWidget(
+            icon1: Icons.arrow_back_ios,
+            title: DropdownButton(
+              value: title,
+              items: [
+                DropdownMenuItem(
+                  value: "Burger",
+                  child: Text(
+                    "Burger",
+                    style: KTextStyle.dropButtonTextStyle,
+                  ),
+                ),
+                DropdownMenuItem(
+                  value: "Pizza",
+                  child: Text(
+                    "Pizza",
+                    style: KTextStyle.dropButtonTextStyle,
+                  ),
+                ),
+                DropdownMenuItem(
+                  value: "Hotdog",
+                  child: Text(
+                    "Hotdog",
+                    style: KTextStyle.dropButtonTextStyle,
+                  ),
+                ),
+                DropdownMenuItem(
+                  value: "Salade",
+                  child: Text(
+                    "Salade",
+                    style: KTextStyle.dropButtonTextStyle,
+                  ),
+                ),
+                DropdownMenuItem(
+                  value: "Sandwich",
+                  child: Text("Sandwich", style: KTextStyle.dropButtonTextStyle,),
+                ),
+              ],
+              onChanged: (value) {},
+              iconEnabledColor: AppColors.primaryColor,
+              borderRadius: BorderRadius.circular(12),
+              underline: SizedBox(),
+              isDense: true,
+            ),
+            suffixicon: Row(
               children: [
-                NavigationWidget(
-                  icon1: Icons.arrow_back_ios,
-                  title: DropdownButton(
-                    value: title,
-                    items: [
-                      DropdownMenuItem(
-                        value: "Burger",
-                        child: Text(
-                          "Burger",
-                          style: KTextStyle.dropButtonTextStyle,
-                        ),
-                      ),
-                      DropdownMenuItem(
-                        value: "Pizza",
-                        child: Text(
-                          "Pizza",
-                          style: KTextStyle.dropButtonTextStyle,
-                        ),
-                      ),
-                      DropdownMenuItem(
-                        value: "Hotdog",
-                        child: Text(
-                          "Hotdog",
-                          style: KTextStyle.dropButtonTextStyle,
-                        ),
-                      ),
-                      DropdownMenuItem(
-                        value: "Salade",
-                        child: Text(
-                          "Salade",
-                          style: KTextStyle.dropButtonTextStyle,
-                        ),
-                      ),
-                      DropdownMenuItem(
-                        value: "Sandwich",
-                        child: Text("Sandwich", style: KTextStyle.dropButtonTextStyle,),
-                      ),
-                    ],
-                    onChanged: (value) {},
-                    iconEnabledColor: AppColors.primaryColor,
-                    borderRadius: BorderRadius.circular(12),
-                    underline: SizedBox(),
-                    isDense: true,
+                Container(
+                  height: 46,
+                  width: 46,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColors.homeDark,
                   ),
-                  suffixicon: Row(
-                    children: [
-                      Container(
-                        height: 46,
-                        width: 46,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: AppColors.homeDark,
-                        ),
-                        child: IconButton(
-                          focusColor: AppColors.homeDark,
-                          onPressed: () {},
-                          icon: Icon(Icons.search, fontWeight: FontWeight.bold),
-                          iconSize: 20,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Container(
-                        height: 46,
-                        width: 46,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color(0xFFECF0F4),
-                        ),
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.filter_list,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          iconSize: 20,
-                          color: AppColors.homeDark,
-                        ),
-                      ),
-                    ],
+                  child: IconButton(
+                    focusColor: AppColors.homeDark,
+                    onPressed: () {},
+                    icon: Icon(Icons.search, fontWeight: FontWeight.bold),
+                    iconSize: 20,
+                    color: Colors.white,
                   ),
-                  onTapLeadingButton: () => Navigator.pop(context),
                 ),
-                SizedBox(height: 20,),
-                HomeSelectionWidget(
-                  selectedInfo: "Popular $title\s",
-                  isSeeAll: false,
-                ),
-                SizedBox(height: 20,),
-                GridView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: popularfood.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2, // 2 items per row
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 20,
-                    childAspectRatio: 153 / 170, // keep consistent card shape
+                SizedBox(width: 10),
+                Container(
+                  height: 46,
+                  width: 46,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Color(0xFFECF0F4),
                   ),
-                  itemBuilder: (context, index) {
-                    return FoodCardWidget(
-                      image: popularfood.elementAt(index).elementAt(0),
-                      foodName: popularfood.elementAt(index).elementAt(1),
-                      restaurantName: popularfood
-                          .elementAt(index)
-                          .elementAt(2),
-                      foodPrice: popularfood.elementAt(index).elementAt(3),
-                    );
-                  },
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.filter_list,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    iconSize: 20,
+                    color: AppColors.homeDark,
+                  ),
                 ),
-                SizedBox(height: 30),
-                HomeSelectionWidget(selectedInfo: "Open Restaurants", isSeeAll: false,),
-                SizedBox(height: 10),
-                ...List.generate(restaurants.length, (index) {
-                  return RestaurantCardWidget(
-                    image: restaurants.elementAt(index).elementAt(0),
-                    name: restaurants.elementAt(index).elementAt(1),
-                    types: restaurants.elementAt(index).elementAt(2),
-                    rating: restaurants.elementAt(index).elementAt(3),
-                    time: restaurants.elementAt(index).elementAt(4),
-                  );
-                }),
               ],
             ),
+            onTapLeadingButton: () => Navigator.pop(context),
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 30),
+          child: Column(
+            children: [
+              SizedBox(height: 20,),
+              HomeSelectionWidget(
+                selectedInfo: "Popular $title\s",
+                isSeeAll: false,
+              ),
+              SizedBox(height: 20,),
+              GridView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: popularfood.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, // 2 items per row
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                  childAspectRatio: 153 / 170, // keep consistent card shape
+                ),
+                itemBuilder: (context, index) {
+                  return FoodCardWidget(
+                    image: popularfood.elementAt(index).elementAt(0),
+                    foodName: popularfood.elementAt(index).elementAt(1),
+                    restaurantName: popularfood
+                        .elementAt(index)
+                        .elementAt(2),
+                    foodPrice: popularfood.elementAt(index).elementAt(3),
+                  );
+                },
+              ),
+              SizedBox(height: 30),
+              HomeSelectionWidget(selectedInfo: "Open Restaurants", isSeeAll: false,),
+              SizedBox(height: 10),
+              ...List.generate(restaurants.length, (index) {
+                return RestaurantCardWidget(
+                  image: restaurants.elementAt(index).elementAt(0),
+                  name: restaurants.elementAt(index).elementAt(1),
+                  types: restaurants.elementAt(index).elementAt(2),
+                  rating: restaurants.elementAt(index).elementAt(3),
+                  time: restaurants.elementAt(index).elementAt(4),
+                );
+              }),
+            ],
           ),
         ),
       ),

@@ -4,8 +4,15 @@ import 'package:food_delivery/views/widgets/card_info_widget.dart';
 import 'package:food_delivery/views/widgets/icon_home_widget.dart';
 import 'package:food_delivery/views/widgets/navigation_widget.dart';
 
-class FoodDetailsPage extends StatelessWidget {
+class FoodDetailsPage extends StatefulWidget {
   const FoodDetailsPage({super.key});
+
+  @override
+  State<FoodDetailsPage> createState() => _FoodDetailsPageState();
+}
+
+class _FoodDetailsPageState extends State<FoodDetailsPage> {
+  int selection = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +24,14 @@ class FoodDetailsPage extends StatelessWidget {
     String duration = "20";
     String foodDescription =
         "Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.";
+    List<String> sizes = ["10", "14", "16"];
+    List<List<dynamic>> ingrediants = [
+      [Icons.restaurant_outlined, "Salt"],
+      [Icons.fastfood_outlined, "Chicken"],
+      [Icons.local_dining_outlined, "Onion"],
+      [Icons.food_bank_outlined, "Garlic"],
+      [Icons.kitchen_outlined, "Pappers"],
+    ];
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -120,12 +135,96 @@ class FoodDetailsPage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 20),
-                  Text(foodDescription, style: TextStyle(
-                    color: Color(0xFFA0A5BA),
-                    fontSize: 14,
-                  )),
+                  Text(
+                    foodDescription,
+                    style: TextStyle(color: Color(0xFFA0A5BA), fontSize: 14),
+                  ),
                   SizedBox(height: 20),
-                  // Row - to be finished later 
+                  Row(
+                    children: [
+                      Text(
+                        "SIZE:",
+                        style: TextStyle(
+                          color: Color(0xFFA0A5BA),
+                          fontSize: 14,
+                        ),
+                      ),
+                      SizedBox(width: 20),
+                      ...List.generate(3, (index) {
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selection = index;
+                            });
+                          },
+                          child: Container(
+                            width: 48,
+                            height: 48,
+                            margin: EdgeInsets.only(right: 10),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: selection == index
+                                  ? Color(0xFFF58D1D)
+                                  : Color(0xFFF0F5FA),
+                            ),
+                            child: Center(
+                              child: Text(
+                                '${sizes.elementAt(index)}"',
+                                style: TextStyle(
+                                  color: selection == index
+                                      ? Colors.white
+                                      : AppColors.homeDark,
+                                  fontSize: 16,
+                                  fontWeight: selection == index
+                                      ? FontWeight.bold
+                                      : FontWeight.normal,
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      }),
+                    ],
+                  ),
+                  SizedBox(height: 15),
+                  Text(
+                    "INGRIDIENTS",
+                    style: TextStyle(color: AppColors.homeDark, fontSize: 13),
+                  ),
+                  SizedBox(height: 15),
+                  Wrap(
+                    spacing: 20,
+                    direction: Axis.horizontal,
+                    children: List.generate(5, (index) {
+                      return Column(
+                        children: [
+                          Container(
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Color(0xFFFFEBE4),
+                            ),
+                            child: Center(
+                              child: Icon(
+                                ingrediants.elementAt(index).elementAt(0),
+                                color: AppColors.primaryColor,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            ingrediants.elementAt(index).elementAt(1),
+                            style: TextStyle(
+                              color: Color(0xFF747783),
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      );
+                    }),
+                  ),
                 ],
               ),
             ),
