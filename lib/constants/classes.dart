@@ -25,4 +25,9 @@ class KTextStyle {
     fontSize: 15,
     fontWeight: FontWeight.bold,
   );
+
+  static const TextStyle FilterTitle = TextStyle(
+    color: AppColors.homeDark,
+    fontSize: 13,
+  );
 }

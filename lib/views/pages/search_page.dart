@@ -213,10 +213,10 @@ class _SearchPageState extends State<SearchPage> {
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: popularfood.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, // 2 items per row
+                  crossAxisCount: 2, 
                   crossAxisSpacing: 20,
                   mainAxisSpacing: 20,
-                  childAspectRatio: 153 / 170, // keep consistent card shape
+                  childAspectRatio: 153 / 170, 
                 ),
                 itemBuilder: (context, index) {
                   return FoodCardWidget(
