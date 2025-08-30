@@ -70,7 +70,7 @@ class FoodCardWidget extends StatelessWidget {
                 width: 30,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: AppColors.primaryColor,
+                  color: AppColors.orangeColor,
                 ),
                 child: IconButton(
                   onPressed: () {

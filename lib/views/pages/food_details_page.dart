@@ -270,7 +270,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: selection == index
-                                  ? Color(0xFFF58D1D)
+                                  ? AppColors.orangeColor
                                   : Color(0xFFF0F5FA),
                             ),
                             child: Center(

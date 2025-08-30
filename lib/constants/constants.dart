@@ -5,4 +5,5 @@ class AppColors {
   static const Color darkColor = Color(0xFF32343E);
   static const Color iconColor = Color(0xFFA0A5BA);
   static const Color homeDark = Color(0xFF181C2E);
+  static const Color orangeColor = Color(0xFFF58D1D);
 }

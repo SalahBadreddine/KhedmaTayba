@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
 import 'package:food_delivery/views/pages/display_page.dart';
+import 'package:food_delivery/views/pages/restaurant_details_page.dart';
 import 'package:food_delivery/views/widgets/card_info_widget.dart';
 import 'package:food_delivery/views/widgets/food_card_widget.dart';
 import 'package:food_delivery/views/widgets/home_selection_widget.dart';
 import 'package:food_delivery/views/widgets/icon_home_widget.dart';
+import 'package:food_delivery/views/widgets/keyword_scroll_widget.dart';
 import 'package:food_delivery/views/widgets/navigation_widget.dart';
 
 class SearchPage extends StatefulWidget {
@@ -125,37 +127,17 @@ class _SearchPageState extends State<SearchPage> {
                 child: Row(
                   children: List.generate(keywords.length, (index) {
                     return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return DisplayPage(title: keywords.elementAt(index),);
-                            },
-                          ),
-                        );
-                      },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 15,
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return DisplayPage(title: keywords.elementAt(index),);
+                          },
                         ),
-                        margin: EdgeInsets.only(right: 10),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(33),
-                          border: Border.all(
-                            color: Color(0xFFEDEDED),
-                            width: 2,
-                          ),
-                        ),
-                        child: Text(
-                          keywords.elementAt(index),
-                          style: TextStyle(
-                            color: AppColors.homeDark,
-                            fontSize: 16,
-                          ),
-                        ),
+                      ),
+                      child: KeywordScrollWidget(
+                        isSelected: false,
+                        title: keywords.elementAt(index),
                       ),
                     );
                   }),
@@ -170,8 +152,17 @@ class _SearchPageState extends State<SearchPage> {
               ListView.separated(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
+                padding: EdgeInsets.zero,
                 itemBuilder: (context, index) {
                   return ListTile(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return RestaurantDetailsPage();
+                        },
+                      ),
+                    ),
                     contentPadding: EdgeInsets.zero,
                     leading: Container(
                       width: 60,
@@ -211,7 +202,7 @@ class _SearchPageState extends State<SearchPage> {
                 itemCount: 3,
               ),
               Divider(color: Color(0xFFEDEDED), thickness: 1.5),
-              SizedBox(height: 10),
+              SizedBox(height: 15),
               HomeSelectionWidget(
                 selectedInfo: "Popular Fast food",
                 isSeeAll: false,
@@ -231,9 +222,7 @@ class _SearchPageState extends State<SearchPage> {
                   return FoodCardWidget(
                     image: popularfood.elementAt(index).elementAt(0),
                     foodName: popularfood.elementAt(index).elementAt(1),
-                    restaurantName: popularfood
-                        .elementAt(index)
-                        .elementAt(2),
+                    restaurantName: popularfood.elementAt(index).elementAt(2),
                     foodPrice: popularfood.elementAt(index).elementAt(3),
                   );
                 },

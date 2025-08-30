@@ -141,7 +141,7 @@ class DisplayPage extends StatelessWidget {
             children: [
               SizedBox(height: 20,),
               HomeSelectionWidget(
-                selectedInfo: "Popular $title\s",
+                selectedInfo: "Popular ${title}s",
                 isSeeAll: false,
               ),
               SizedBox(height: 20,),
