@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
+import 'package:food_delivery/views/pages/edit_cart_page.dart';
 import 'package:food_delivery/views/pages/search_page.dart';
 import 'package:food_delivery/views/widgets/category_widget.dart';
 import 'package:food_delivery/views/widgets/home_selection_widget.dart';
@@ -46,7 +47,7 @@ class _HomePageState extends State<HomePage> {
       ["Chawarma", "Grillade", "Meat"],
       "4.5",
       "70",
-    ]
+    ],
   ];
 
   @override
@@ -55,7 +56,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(10),
           child: NavigationWidget(
             onTapLeadingButton: () {},
             icon1: Icons.menu,
@@ -83,10 +84,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ],
-                  icon: Icon(
-                    Icons.arrow_drop_down,
-                    color: AppColors.homeDark,
-                  ),
+                  icon: Icon(Icons.arrow_drop_down, color: AppColors.homeDark),
                   underline: SizedBox(),
                   onChanged: (value) {},
                 ),
@@ -105,7 +103,16 @@ class _HomePageState extends State<HomePage> {
                       color: AppColors.homeDark,
                     ),
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return EditCartPage();
+                            },
+                          ),
+                        );
+                      },
                       icon: Icon(Icons.shopping_cart),
                       color: Colors.white,
                     ),
@@ -144,7 +151,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 20,),
+              SizedBox(height: 20),
               RichText(
                 text: TextSpan(
                   text: "Hey Halal, ",
@@ -179,16 +186,16 @@ class _HomePageState extends State<HomePage> {
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    prefixIcon: Icon(
-                      Icons.search,
-                      color: AppColors.iconColor,
-                    ),
+                    prefixIcon: Icon(Icons.search, color: AppColors.iconColor),
                     contentPadding: EdgeInsets.all(20),
                   ),
                 ),
               ),
               SizedBox(height: 30),
-              HomeSelectionWidget(selectedInfo: selectedCtegory, isSeeAll: true,),
+              HomeSelectionWidget(
+                selectedInfo: selectedCtegory,
+                isSeeAll: true,
+              ),
               SizedBox(height: 10),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -198,9 +205,7 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         setState(() {
                           selectedCategoryIndex = index;
-                          selectedCtegory = list
-                              .elementAt(index)
-                              .elementAt(0);
+                          selectedCtegory = list.elementAt(index).elementAt(0);
                         });
                       },
                       child: CategoryWidget(
@@ -213,7 +218,10 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(height: 20),
-              HomeSelectionWidget(selectedInfo: "Open Restaurants", isSeeAll: true,),
+              HomeSelectionWidget(
+                selectedInfo: "Open Restaurants",
+                isSeeAll: true,
+              ),
               SizedBox(height: 10),
               ...List.generate(restaurants.length, (index) {
                 return RestaurantCardWidget(

@@ -7,4 +7,5 @@ class AppColors {
   static const Color homeDark = Color(0xFF181C2E);
   static const Color orangeColor = Color(0xFFF58D1D);
   static const Color greyColor = Color(0xFFEDEDED);
+  static const Color cartDarkColor = Color(0xFF121223);
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
+import 'package:food_delivery/views/pages/edit_cart_page.dart';
 import 'package:food_delivery/views/widgets/card_info_widget.dart';
 import 'package:food_delivery/views/widgets/icon_home_widget.dart';
 import 'package:food_delivery/views/widgets/navigation_widget.dart';
@@ -15,7 +16,7 @@ class FoodDetailsPage extends StatefulWidget {
 class _FoodDetailsPageState extends State<FoodDetailsPage> {
   int selection = 0;
   int foodQuantity = 1;
-  
+
   @override
   Widget build(BuildContext context) {
     String foodImage = "assets/images/burger_background.webp";
@@ -74,7 +75,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                           width: 24,
                           height: 24,
                           decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 44, 44, 55),
+                            color: Color.fromARGB(255, 77, 77, 97),
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
@@ -106,7 +107,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                           width: 24,
                           height: 24,
                           decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 44, 44, 55),
+                            color: Color.fromARGB(255, 77, 77, 97),
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
@@ -133,7 +134,16 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
               child: OrangeButtonWidget(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return EditCartPage();
+                      },
+                    ),
+                  );
+                },
                 buttontext: "ADD TO CART",
               ),
             ),

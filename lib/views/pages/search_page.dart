@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
 import 'package:food_delivery/views/pages/display_page.dart';
+import 'package:food_delivery/views/pages/edit_cart_page.dart';
 import 'package:food_delivery/views/pages/restaurant_details_page.dart';
 import 'package:food_delivery/views/widgets/card_info_widget.dart';
 import 'package:food_delivery/views/widgets/food_card_widget.dart';
@@ -62,7 +63,16 @@ class _SearchPageState extends State<SearchPage> {
                       color: AppColors.homeDark,
                     ),
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return EditCartPage();
+                            },
+                          ),
+                        );
+                      },
                       icon: Icon(Icons.shopping_cart),
                       color: Colors.white,
                     ),
