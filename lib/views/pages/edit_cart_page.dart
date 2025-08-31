@@ -73,7 +73,7 @@ class _EditCartPageState extends State<EditCartPage> {
       ),
       bottomNavigationBar: Container(
         width: double.infinity,
-        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+        padding: EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 30),
         height: 310,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(

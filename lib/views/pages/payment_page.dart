@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
+import 'package:food_delivery/views/pages/add_card_page.dart';
+import 'package:food_delivery/views/pages/payment_successful_page.dart';
 import 'package:food_delivery/views/widgets/navigation_widget.dart';
 import 'package:food_delivery/views/widgets/orange_button_widget.dart';
 
@@ -13,13 +15,14 @@ class PaymentPage extends StatefulWidget {
 }
 
 class _PaymentPageState extends State<PaymentPage> {
+  int selectedPayment = 2;
   @override
   Widget build(BuildContext context) {
     List<List<String>> paymentMethods = [
       ["assets/images/cash.jpg", "Cash"],
       ["assets/images/edhahabialogo.jpg", "Edhahabia"],
-      ["assets/images/visalogo.png", "Visa"],
       ["assets/images/mastercardlogo.png", "Mastercard"],
+      ["assets/images/visalogo.png", "Visa"],
       ["assets/images/paypallogo.png", "Paypal"],
     ];
     return Scaffold(
@@ -42,7 +45,7 @@ class _PaymentPageState extends State<PaymentPage> {
         padding: EdgeInsets.all(30),
         child: SizedBox(
           width: double.infinity,
-          height: 150,
+          height: 130,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -60,7 +63,19 @@ class _PaymentPageState extends State<PaymentPage> {
                 ],
               ),
               SizedBox(height: 20),
-              OrangeButtonWidget(onPressed: () {}, buttontext: "PAY & CONFIRM"),
+              OrangeButtonWidget(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return PaymentSuccessfulPage();
+                      },
+                    ),
+                  );
+                },
+                buttontext: "PAY & CONFIRM",
+              ),
             ],
           ),
         ),
@@ -74,26 +89,72 @@ class _PaymentPageState extends State<PaymentPage> {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  spacing: 20,
+                  spacing: 15,
                   children: List.generate(paymentMethods.length, (index) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
-                          width: 85,
-                          height: 72,
-                          padding: EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            color: AppColors.greyBackgroundColor,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: Image.asset(
-                              paymentMethods.elementAt(index).elementAt(0),
-                              fit: BoxFit.cover,
-                            ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5, right: 5),
+                          child: Stack(
+                            clipBehavior: Clip.none,
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    selectedPayment = index;
+                                  });
+                                },
+                                child: Container(
+                                  width: 85,
+                                  height: 72,
+                                  padding: EdgeInsets.all(20),
+                                  decoration: BoxDecoration(
+                                    color: selectedPayment == index
+                                        ? Colors.white
+                                        : AppColors.greyBackgroundColor,
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: selectedPayment == index
+                                        ? Border.all(
+                                            color: AppColors.primaryColor,
+                                            width: 2,
+                                          )
+                                        : null,
+                                  ),
+                                  child: Center(
+                                    child: Image.asset(
+                                      paymentMethods
+                                          .elementAt(index)
+                                          .elementAt(0),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              selectedPayment == index
+                                  ? Positioned(
+                                      top: -5,
+                                      right: -5,
+                                      child: Container(
+                                        width: 24,
+                                        height: 24,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: AppColors.primaryColor,
+                                        ),
+                                        child: Icon(
+                                          Icons.check,
+                                          size: 20,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    )
+                                  : SizedBox(),
+                            ],
                           ),
                         ),
+                        SizedBox(height: 3),
                         Text(
                           paymentMethods.elementAt(index).elementAt(1),
                           style: TextStyle(
@@ -157,7 +218,16 @@ class _PaymentPageState extends State<PaymentPage> {
                 width: double.infinity,
                 height: 62,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return AddCardPage();
+                        },
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
