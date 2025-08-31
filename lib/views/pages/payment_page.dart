@@ -4,7 +4,9 @@ import 'package:food_delivery/views/widgets/navigation_widget.dart';
 import 'package:food_delivery/views/widgets/orange_button_widget.dart';
 
 class PaymentPage extends StatefulWidget {
-  const PaymentPage({super.key});
+  const PaymentPage({super.key, required this.total});
+
+  final String total;
 
   @override
   State<PaymentPage> createState() => _PaymentPageState();
@@ -33,6 +35,33 @@ class _PaymentPageState extends State<PaymentPage> {
             ),
             suffixicon: SizedBox(),
             onTapLeadingButton: () => Navigator.pop(context),
+          ),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.all(30),
+        child: SizedBox(
+          width: double.infinity,
+          height: 150,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Text(
+                    "TOTAL: ",
+                    style: TextStyle(color: AppColors.iconColor, fontSize: 14),
+                  ),
+                  SizedBox(width: 10),
+                  Text(
+                    "\$${widget.total}",
+                    style: TextStyle(color: AppColors.homeDark, fontSize: 30),
+                  ),
+                ],
+              ),
+              SizedBox(height: 20),
+              OrangeButtonWidget(onPressed: () {}, buttontext: "PAY & CONFIRM"),
+            ],
           ),
         ),
       ),
@@ -101,7 +130,7 @@ class _PaymentPageState extends State<PaymentPage> {
                           ),
                         ),
                         Text(
-                          "No master card added",
+                          "No mastercard added",
                           style: TextStyle(
                             color: Color(0xFF32343E),
                             fontSize: 16,
@@ -128,7 +157,7 @@ class _PaymentPageState extends State<PaymentPage> {
                 width: double.infinity,
                 height: 62,
                 child: ElevatedButton(
-                  onPressed: () {}, 
+                  onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
@@ -137,20 +166,28 @@ class _PaymentPageState extends State<PaymentPage> {
                     side: BorderSide(
                       color: AppColors.greyBackgroundColor,
                       width: 1,
-                    )
+                    ),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.add, size: 20, color: AppColors.primaryColor, fontWeight: FontWeight.bold,),
-                      SizedBox(width: 5,),
-                      Text("ADD NEW", style: TextStyle(
+                      Icon(
+                        Icons.add,
+                        size: 20,
                         color: AppColors.primaryColor,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold
-                      ))
+                        fontWeight: FontWeight.bold,
+                      ),
+                      SizedBox(width: 5),
+                      Text(
+                        "ADD NEW",
+                        style: TextStyle(
+                          color: AppColors.primaryColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
-                  )
+                  ),
                 ),
               ),
             ],

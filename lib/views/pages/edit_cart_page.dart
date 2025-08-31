@@ -171,7 +171,7 @@ class _EditCartPageState extends State<EditCartPage> {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return PaymentPage();
+                      return PaymentPage(total: calculateTotal(),);
                     },
                   ),
                 );
