@@ -14,13 +14,27 @@ class _EditCartPageState extends State<EditCartPage> {
   int foodQuantity = 1; // this will be passed later
   bool onEdit = false;
   List<List<String>> cartFoods = [
-      // is used in Popular fast food, unlimited suggestions
-      ["assets/images/burger_background.webp", "American Burger", "70", "14"],
-      ["assets/images/onboarding1.png", "European Pizza", "40", "12"],
-      ["assets/images/hotdog.png", "German Hot Dog", "55", "10"],
-      ["assets/images/hotdog.png", "Algerian Hot Dog", "100", "10"],
-    ];
-    
+    // is used in Popular fast food, unlimited suggestions
+    [
+      "assets/images/burger_background.webp",
+      "American Burger",
+      "70",
+      "14",
+      "2",
+    ],
+    ["assets/images/onboarding1.png", "European Pizza", "40", "12", "1"],
+    ["assets/images/hotdog.png", "German Hot Dog", "55", "10", "1"],
+    ["assets/images/hotdog.png", "Algerian Hot Dog", "100", "10", "1"],
+  ];
+
+  String calculateTotal() {
+    int total = 0;
+    for (int i = 0; i < cartFoods.length; i++) {
+      total += int.parse(cartFoods[i][2]) * int.parse(cartFoods[i][4]);
+    }
+    return total.toString();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,7 +133,7 @@ class _EditCartPageState extends State<EditCartPage> {
                     ),
                     SizedBox(width: 10),
                     Text(
-                      "\$96",
+                      "\$${calculateTotal()}",
                       style: TextStyle(
                         color: AppColors.cartDarkColor,
                         fontSize: 30,
@@ -129,14 +143,17 @@ class _EditCartPageState extends State<EditCartPage> {
                 ),
                 Row(
                   children: [
-                    Text(
-                      "Breakdown",
-                      style: TextStyle(
-                        color: AppColors.primaryColor,
-                        fontSize: 14,
+                    TextButton(
+                      style: TextButton.styleFrom(padding: EdgeInsets.all(3)),
+                      onPressed: () {},
+                      child: Text(
+                        "Breakdown",
+                        style: TextStyle(
+                          color: AppColors.primaryColor,
+                          fontSize: 14,
+                        ),
                       ),
                     ),
-                    SizedBox(width: 3),
                     Icon(
                       Icons.arrow_forward_ios,
                       color: AppColors.cartDarkColor,
@@ -255,7 +272,16 @@ class _EditCartPageState extends State<EditCartPage> {
                                       child: IconButton(
                                         onPressed: () {
                                           setState(() {
-                                            foodQuantity--;
+                                            int count = int.parse(
+                                              cartFoods
+                                                  .elementAt(index)
+                                                  .elementAt(4),
+                                            );
+                                            if (count > 1) {
+                                              count--;
+                                              cartFoods.elementAt(index)[4] =
+                                                  count.toString();
+                                            }
                                           });
                                         },
                                         icon: Icon(
@@ -268,7 +294,7 @@ class _EditCartPageState extends State<EditCartPage> {
                                       ),
                                     ),
                                     Text(
-                                      foodQuantity.toString(),
+                                      cartFoods.elementAt(index).elementAt(4),
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 16,
@@ -285,7 +311,14 @@ class _EditCartPageState extends State<EditCartPage> {
                                       child: IconButton(
                                         onPressed: () {
                                           setState(() {
-                                            foodQuantity++;
+                                            int count =
+                                                int.parse(
+                                                  cartFoods
+                                                      .elementAt(index)
+                                                      .elementAt(4),
+                                                ) +
+                                                1;
+                                            cartFoods[index][4] = count.toString();
                                           });
                                         },
                                         icon: Icon(
