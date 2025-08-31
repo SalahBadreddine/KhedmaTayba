@@ -8,4 +8,5 @@ class AppColors {
   static const Color orangeColor = Color(0xFFF58D1D);
   static const Color greyColor = Color(0xFFEDEDED);
   static const Color cartDarkColor = Color(0xFF121223);
+  static const Color greyBackgroundColor = Color(0xFFF0F5FA);
 }

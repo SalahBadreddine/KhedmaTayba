@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
+import 'package:food_delivery/views/pages/payment_page.dart';
 import 'package:food_delivery/views/widgets/navigation_widget.dart';
 import 'package:food_delivery/views/widgets/orange_button_widget.dart';
 
@@ -135,7 +136,7 @@ class _EditCartPageState extends State<EditCartPage> {
                     Text(
                       "\$${calculateTotal()}",
                       style: TextStyle(
-                        color: AppColors.cartDarkColor,
+                        color: AppColors.homeDark,
                         fontSize: 30,
                       ),
                     ),
@@ -164,7 +165,19 @@ class _EditCartPageState extends State<EditCartPage> {
               ],
             ),
             SizedBox(height: 20),
-            OrangeButtonWidget(onPressed: () {}, buttontext: "PLACE ORDER"),
+            OrangeButtonWidget(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return PaymentPage();
+                    },
+                  ),
+                );
+              },
+              buttontext: "PLACE ORDER",
+            ),
           ],
         ),
       ),
@@ -318,7 +331,8 @@ class _EditCartPageState extends State<EditCartPage> {
                                                       .elementAt(4),
                                                 ) +
                                                 1;
-                                            cartFoods[index][4] = count.toString();
+                                            cartFoods[index][4] = count
+                                                .toString();
                                           });
                                         },
                                         icon: Icon(
