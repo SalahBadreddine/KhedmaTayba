@@ -39,7 +39,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
 
     return Scaffold(
       bottomNavigationBar: Container(
-        height: 184,
+        height: 200,
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
@@ -47,11 +47,13 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 30.0,
-                vertical: 15,
+              padding: const EdgeInsets.only(
+                right: 30.0,
+                left: 30.0,
+                top: 0,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

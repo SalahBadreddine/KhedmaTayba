@@ -48,6 +48,7 @@ class _PaymentPageState extends State<PaymentPage> {
           height: 130,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Row(
                 children: [
