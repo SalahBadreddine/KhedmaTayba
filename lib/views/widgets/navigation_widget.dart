@@ -30,17 +30,15 @@ class NavigationWidget extends StatelessWidget {
                 shape: BoxShape.circle,
                 color: Color(0xFFECF0F4),
               ),
-              child: Center(
-                child: IconButton(
-                  padding: EdgeInsets.all(0),
-                  constraints: BoxConstraints(),
-                  onPressed: () {
-                    onTapLeadingButton();
-                  },
-                  icon: Icon(icon1, fontWeight: FontWeight.bold),
-                  iconSize: 15,
-                  color: AppColors.homeDark,
-                ),
+              child: IconButton(
+                padding: EdgeInsets.all(0),
+                constraints: BoxConstraints(),
+                onPressed: () {
+                  onTapLeadingButton();
+                },
+                icon: Icon(icon1, fontWeight: FontWeight.bold),
+                iconSize: 15,
+                color: AppColors.homeDark,
               ),
             ),
             title,

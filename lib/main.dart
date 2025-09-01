@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/views/pages/home_page.dart';
 import 'package:food_delivery/views/pages/onboarding_page.dart';
 
 void main() {
@@ -17,7 +18,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         fontFamily: "Sen",
       ),
-      home: const OnboardingPage(),
+      initialRoute: '/onboarding',
+      routes: {
+        '/onboarding': (context) => const OnboardingPage(),
+        '/home': (context) => const HomePage(),
+      },
     );
   }
 }

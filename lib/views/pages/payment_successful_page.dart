@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/views/pages/track_order_page.dart';
 import 'package:food_delivery/views/widgets/orange_button_widget.dart';
 
 class PaymentSuccessfulPage extends StatelessWidget {
@@ -7,13 +8,20 @@ class PaymentSuccessfulPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(automaticallyImplyLeading: false,),
+      appBar: AppBar(automaticallyImplyLeading: false),
       bottomNavigationBar: Padding(
         padding: EdgeInsets.all(30),
         child: SizedBox(
           child: OrangeButtonWidget(
-            // for now 
-            onPressed: () => Navigator.pop(context),
+            // for now
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return TrackOrderPage();
+                },
+              ),
+            ),
             buttontext: "TRACK ORDER",
           ),
         ),

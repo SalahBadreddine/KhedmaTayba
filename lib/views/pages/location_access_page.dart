@@ -23,6 +23,7 @@ class LocationAccessPage extends StatelessWidget {
                   Navigator.push(
                     context,
                     PageRouteBuilder(
+                      settings: RouteSettings(name: '/home'),
                       transitionDuration: Duration(milliseconds: 700),
                       pageBuilder: (context, animation, secondaryAnimation) => HomePage(),
                       transitionsBuilder: (context, animation, secondaryAnimation, child) {
