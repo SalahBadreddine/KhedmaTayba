@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
 import 'package:food_delivery/views/pages/delivery_man_call_page.dart';
+import 'package:food_delivery/views/pages/delivery_man_chat_page.dart';
 import 'package:food_delivery/views/widgets/navigation_widget.dart';
 
 class TrackOrderPage extends StatelessWidget {
@@ -30,15 +31,18 @@ class TrackOrderPage extends StatelessWidget {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.transparent,
-          title: NavigationWidget(
-            icon1: Icons.arrow_back_ios,
-            title: Text(
-              "Track Order",
-              style: TextStyle(color: AppColors.homeDark, fontSize: 17),
+          title: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: NavigationWidget(
+              icon1: Icons.arrow_back_ios,
+              title: Text(
+                "Track Order",
+                style: TextStyle(color: AppColors.homeDark, fontSize: 17),
+              ),
+              suffixicon: SizedBox(),
+              onTapLeadingButton: () =>
+                  Navigator.popUntil(context, ModalRoute.withName('/home')),
             ),
-            suffixicon: SizedBox(),
-            onTapLeadingButton: () =>
-                Navigator.popUntil(context, ModalRoute.withName('/home')),
           ),
         ),
         body: Stack(
@@ -364,7 +368,16 @@ class TrackOrderPage extends StatelessWidget {
                                           color: AppColors.primaryColor,
                                           fontWeight: FontWeight.bold,
                                         ),
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) {
+                                                return DeliveryManChatPage();
+                                              },
+                                            ),
+                                          );
+                                        },
                                       ),
                                     ),
                                   ],

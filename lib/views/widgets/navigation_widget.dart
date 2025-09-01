@@ -37,7 +37,7 @@ class NavigationWidget extends StatelessWidget {
                   onTapLeadingButton();
                 },
                 icon: Icon(icon1, fontWeight: FontWeight.bold),
-                iconSize: 15,
+                iconSize: 17,
                 color: AppColors.homeDark,
               ),
             ),
