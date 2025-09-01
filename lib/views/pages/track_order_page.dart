@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
+import 'package:food_delivery/views/pages/delivery_man_call_page.dart';
 import 'package:food_delivery/views/widgets/navigation_widget.dart';
 
 class TrackOrderPage extends StatelessWidget {
@@ -51,7 +52,7 @@ class TrackOrderPage extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(20),
+                      top: Radius.circular(24),
                     ),
                   ),
                   child: ListView(
@@ -260,7 +261,7 @@ class TrackOrderPage extends StatelessWidget {
                             padding: EdgeInsets.only(bottom: 10),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(20),
+                                top: Radius.circular(24),
                               ),
                               border: Border(
                                 top: BorderSide(
@@ -332,10 +333,19 @@ class TrackOrderPage extends StatelessWidget {
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                         ),
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) {
+                                                return DeliveryManCallPage();
+                                              },
+                                            ),
+                                          );
+                                        },
                                       ),
                                     ),
-                                    SizedBox(width: 10),
+                                    SizedBox(width: 15),
                                     Container(
                                       width: 45,
                                       height: 45,
