@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
-import 'package:food_delivery/views/pages/track_order_page.dart';
 
 class HistoryOrderCardWidget extends StatelessWidget {
   const HistoryOrderCardWidget({
@@ -132,43 +131,43 @@ class HistoryOrderCardWidget extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    width: 139,
-                    height: 38,
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryColor,
-                      borderRadius: BorderRadius.circular(12),
+                  ElevatedButton(
+                    onPressed: () {}, 
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primaryColor,
+                      minimumSize: const Size(139, 38),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadiusGeometry.circular(12)
+                      )
                     ),
-                    child: Center(
-                      child: Text(
-                        "Rate",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    child: const Text(
+                      "Rate",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  Container(
-                    width: 139,
-                    height: 38,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        color: AppColors.primaryColor,
-                        width: 1,
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white, 
+                      minimumSize: const Size(139, 38),     
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12), 
+                        side: BorderSide(
+                          color: AppColors.primaryColor,
+                          width: 1
+                        )
                       ),
                     ),
-                    child: Center(
-                      child: Text(
-                        "Re-Order",
-                        style: TextStyle(
-                          color: AppColors.primaryColor,
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    onPressed: () {},
+                    child: const Text(
+                      "Cancel",
+                      style: TextStyle(
+                        color: AppColors.primaryColor,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
