@@ -85,10 +85,19 @@ This project is licensed under the **MIT License** – feel free to use it as in
 
 ## Some Screenshots of the app 
 
-![alt text](assets/images/screenshots/onboarding.png)
-![alt text](assets/images/screenshots/login.png)
-![alt text](assets/images/screenshots/home.png)
-![alt text](assets/images/screenshots/card.png)
-![alt text](assets/images/screenshots/profile.png)
-![alt text](assets/images/screenshots/order.png)
-![alt text](assets/images/screenshots/track_order.png)
+<p align="center">
+  <img src="assets/images/screenshots/onboarding.jpeg" alt="Onboarding" width="300">
+  <img src="assets/images/screenshots/login.jpeg" alt="Login" width="300">
+  <img src="assets/images/screenshots/home.jpeg" alt="Home" width="300">
+</p>
+
+<p align="center">
+    <img src="assets/images/screenshots/chat.jpeg" alt="Order" width="300">
+  <img src="assets/images/screenshots/card.jpeg" alt="Card" width="300">
+  <img src="assets/images/screenshots/profile.jpeg" alt="Profile" width="300">
+</p>
+
+<p align="center">
+    <img src="assets/images/screenshots/order.jpeg" alt="Order" width="300">
+  <img src="assets/images/screenshots/track_order.jpeg" alt="Track Order" width="300">
+</p>
