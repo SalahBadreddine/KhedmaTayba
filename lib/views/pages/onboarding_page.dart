@@ -88,7 +88,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             ),
             SmoothPageIndicator(
               controller: _pageController,
-              count: 3,
+              count: onboardingPages.length,
               effect: WormEffect(),
               onDotClicked: (index) {
                 _pageController.animateToPage(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
 import 'package:food_delivery/views/pages/edit_cart_page.dart';
+import 'package:food_delivery/views/pages/profile_page.dart';
 import 'package:food_delivery/views/pages/search_page.dart';
 import 'package:food_delivery/views/widgets/category_widget.dart';
 import 'package:food_delivery/views/widgets/home_selection_widget.dart';
@@ -58,7 +59,16 @@ class _HomePageState extends State<HomePage> {
         title: Padding(
           padding: const EdgeInsets.all(10),
           child: NavigationWidget(
-            onTapLeadingButton: () {},
+            onTapLeadingButton: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return ProfilePage();
+                  },
+                ),
+              );
+            },
             icon1: Icons.menu,
             title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
