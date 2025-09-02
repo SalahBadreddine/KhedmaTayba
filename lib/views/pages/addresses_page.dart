@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
+import 'package:food_delivery/views/pages/add_new_address_page.dart';
 import 'package:food_delivery/views/widgets/address_description_widget.dart';
 import 'package:food_delivery/views/widgets/navigation_widget.dart';
 import 'package:food_delivery/views/widgets/orange_button_widget.dart';
@@ -33,7 +34,16 @@ class AddressesPage extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(30.0),
         child: OrangeButtonWidget(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return AddNewAddressPage();
+                },
+              ),
+            );
+          },
           buttontext: "ADD NEW ADDRESS",
         ),
       ),
