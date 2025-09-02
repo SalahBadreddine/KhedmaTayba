@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
+import 'package:food_delivery/views/pages/edit_profile_page.dart';
 import 'package:food_delivery/views/widgets/navigation_widget.dart';
 
 class PersonalInfoPage extends StatelessWidget {
@@ -8,9 +9,21 @@ class PersonalInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<List<dynamic>> infos = [
-      ["FULL NAME", "Salah Badreddine", Icon(Icons.person_outlined, color: Color(0xFFFB6F3D)),],
-      ["EMAIL", "salah.badreddine@ensia.edu.dz", Icon(Icons.email_outlined, color: Color(0xFF413DFB)),],
-      ["PHONE NUMBER", "+213 672186755", Icon(Icons.phone_outlined, color: Color(0xFF369BFF)),],
+      [
+        "FULL NAME",
+        "Salah Badreddine",
+        Icon(Icons.person_outlined, color: Color(0xFFFB6F3D)),
+      ],
+      [
+        "EMAIL",
+        "salah.badreddine@ensia.edu.dz",
+        Icon(Icons.email_outlined, color: Color(0xFF413DFB)),
+      ],
+      [
+        "PHONE NUMBER",
+        "+213 672186755",
+        Icon(Icons.phone_outlined, color: Color(0xFF369BFF)),
+      ],
     ];
     return Scaffold(
       appBar: AppBar(
@@ -24,7 +37,16 @@ class PersonalInfoPage extends StatelessWidget {
               style: TextStyle(color: AppColors.homeDark, fontSize: 17),
             ),
             suffixicon: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return EditProfilePage();
+                    },
+                  ),
+                );
+              },
               child: Text(
                 "EDIT",
                 style: TextStyle(
