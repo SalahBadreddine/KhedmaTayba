@@ -86,18 +86,18 @@ This project is licensed under the **MIT License** – feel free to use it as in
 ## Some Screenshots of the app 
 
 <p align="center">
-  <img src="assets/images/screenshots/onboarding.jpeg" alt="Onboarding" width="300">
-  <img src="assets/images/screenshots/login.jpeg" alt="Login" width="300">
-  <img src="assets/images/screenshots/home.jpeg" alt="Home" width="300">
+  <img src="assets/images/screenshots/onboarding.jpeg" alt="Onboarding" width="200">
+  <img src="assets/images/screenshots/login.jpeg" alt="Login" width="200">
+  <img src="assets/images/screenshots/home.jpeg" alt="Home" width="200">
 </p>
 
 <p align="center">
-    <img src="assets/images/screenshots/chat.jpeg" alt="Order" width="300">
-  <img src="assets/images/screenshots/card.jpeg" alt="Card" width="300">
-  <img src="assets/images/screenshots/profile.jpeg" alt="Profile" width="300">
+    <img src="assets/images/screenshots/chat.jpeg" alt="Order" width="200">
+  <img src="assets/images/screenshots/card.jpeg" alt="Card" width="200">
+  <img src="assets/images/screenshots/profile.jpeg" alt="Profile" width="200">
 </p>
 
 <p align="center">
-    <img src="assets/images/screenshots/order.jpeg" alt="Order" width="300">
-  <img src="assets/images/screenshots/track_order.jpeg" alt="Track Order" width="300">
+    <img src="assets/images/screenshots/order.jpeg" alt="Order" width="200">
+  <img src="assets/images/screenshots/track_order.jpeg" alt="Track Order" width="200">
 </p>
