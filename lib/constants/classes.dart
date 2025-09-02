@@ -30,4 +30,16 @@ class KTextStyle {
     color: AppColors.homeDark,
     fontSize: 13,
   );
+
+  static const selectedTextStyle = TextStyle(
+    color: AppColors.primaryColor,
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
+  );
+
+  static const unselectedTextStyle = TextStyle(
+    color: Color(0xFFA5A7B9),
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
+  );
 }

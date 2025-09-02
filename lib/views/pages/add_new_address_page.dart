@@ -19,6 +19,7 @@ class _AddNewAddressPageState extends State<AddNewAddressPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //TODO: implement the map 
       backgroundColor: Color(0xFFD0D9E1),
       appBar: AppBar(
         automaticallyImplyLeading: false,

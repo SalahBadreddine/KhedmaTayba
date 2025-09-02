@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
 import 'package:food_delivery/views/pages/addresses_page.dart';
+import 'package:food_delivery/views/pages/my_orders_page.dart';
 import 'package:food_delivery/views/pages/personal_info_page.dart';
 import 'package:food_delivery/views/widgets/menu_info_widget.dart';
 import 'package:food_delivery/views/widgets/navigation_widget.dart';
@@ -23,14 +24,30 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
       ],
-      ["Addresses", Icon(Icons.map_outlined, color: Color(0xFF413DFB)), () => Navigator.push(
+      [
+        "Addresses",
+        Icon(Icons.map_outlined, color: Color(0xFF413DFB)),
+        () => Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) {
               return AddressesPage();
             },
           ),
-        ),],
+        ),
+      ],
+      [
+        "My Orders",
+        Icon(Icons.delivery_dining_outlined, color: Color(0xFF369BFF)),
+        () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return MyOrdersPage();
+            },
+          ),
+        ),
+      ],
     ];
 
     List<List<dynamic>> appInfos = [
