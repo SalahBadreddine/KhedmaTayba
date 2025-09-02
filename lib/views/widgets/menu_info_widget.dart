@@ -19,13 +19,15 @@ class MenuInfoWidget extends StatelessWidget {
         child: Column(
           children: List.generate(infos.length, (index) {
             return ListTile(
+              onTap: infos.elementAt(index).elementAt(2),
               contentPadding: EdgeInsets.only(left: 10),
               title: Text(
                 infos.elementAt(index).elementAt(0),
                 style: TextStyle(color: AppColors.darkColor, fontSize: 16),
               ),
               trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                },
                 icon: Icon(
                   Icons.arrow_forward_ios,
                   size: 12,

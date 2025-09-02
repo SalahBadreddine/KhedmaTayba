@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants/constants.dart';
+import 'package:food_delivery/views/pages/personal_info_page.dart';
 import 'package:food_delivery/views/widgets/menu_info_widget.dart';
 import 'package:food_delivery/views/widgets/navigation_widget.dart';
 
@@ -9,20 +10,41 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<List<dynamic>> personalInfos = [
-      ["Personal Info", Icon(Icons.person_outlined, color: Color(0xFFFB6F3D))],
-      ["Addresses", Icon(Icons.map_outlined, color: Color(0xFF413DFB))],
+      [
+        "Personal Info",
+        Icon(Icons.person_outlined, color: Color(0xFFFB6F3D)),
+        () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return PersonalInfoPage();
+            },
+          ),
+        ),
+      ],
+      ["Addresses", Icon(Icons.map_outlined, color: Color(0xFF413DFB)), () {}],
     ];
 
     List<List<dynamic>> appInfos = [
-      ["Cart", Icon(Icons.shopping_bag_outlined, color: Color(0xFF369BFF))],
-      ["Favourite", Icon(Icons.favorite_outline, color: Color(0xFFB33DFB))],
+      [
+        "Cart",
+        Icon(Icons.shopping_bag_outlined, color: Color(0xFF369BFF)),
+        () {},
+      ],
+      [
+        "Favourite",
+        Icon(Icons.favorite_outline, color: Color(0xFFB33DFB)),
+        () {},
+      ],
       [
         "Notifications",
         Icon(Icons.notifications_outlined, color: Color(0xFFFFAA2A)),
+        () {},
       ],
       [
         "Payment Method",
         Icon(Icons.payment_outlined, color: Color(0xFF369BFF)),
+        () {},
       ],
     ];
 
@@ -30,16 +52,22 @@ class ProfilePage extends StatelessWidget {
       [
         "FAQs",
         Icon(Icons.question_mark_outlined, color: AppColors.primaryColor),
+        () {},
       ],
-      ["User Reviews", Icon(Icons.reviews_outlined, color: Color(0xFF2AE1E1))],
+      [
+        "User Reviews",
+        Icon(Icons.reviews_outlined, color: Color(0xFF2AE1E1)),
+        () {},
+      ],
       [
         "Settings",
         Icon(Icons.settings_outlined, color: Color(0xFF413DFB)),
+        () {},
       ],
     ];
 
     List<List<dynamic>> logoutInfos = [
-      ["Log Out", Icon(Icons.logout_outlined, color: Color(0xFFFB4A59))],
+      ["Log Out", Icon(Icons.logout_outlined, color: Color(0xFFFB4A59)), () {}],
     ];
 
     return Scaffold(
